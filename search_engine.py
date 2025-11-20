@@ -1,14 +1,23 @@
 import json
+import pickle
+import re
+from collections import defaultdict
+from typing import Dict, List, Set
 import math
-from typing import List, Dict, Tuple
+
 from preprocessing import TextPreprocessor
 from indexing import InvertedIndex
 
 class SearchEngine:
-    def __init__(self, index_file: str, corpus_file: str):
+    def __init__(self, index_file: str, corpus_file: str, file_type: str = 'pkl'):
         print("🔍 Memuat Search Engine...")
         
-        self.index = InvertedIndex.load_index(index_file)
+        if file_type == 'txt':
+            self.index = InvertedIndex.load_index_from_txt(index_file)
+        elif file_type == 'json':
+            self.index = InvertedIndex.load_index_from_json(index_file)
+        else:
+            self.index = InvertedIndex.load_index(index_file)
         
         with open(corpus_file, 'r', encoding='utf-8') as f:
             self.corpus = json.load(f)
@@ -120,20 +129,140 @@ class SearchEngine:
         print(f"\n{'='*80}")
         print(f"📈 ANALISIS PERBANDINGAN")
         print(f"{'='*80}")
-        print(f"Dokumen yang sama di Top-{top_k}: {len(overlap)} dari {top_k}")
-        print(f"Overlap percentage: {len(overlap)/top_k*100:.1f}%")
+        
+        print(f"\n🔹 Overlap Dokumen:")
+        print(f"   Dokumen yang sama: {len(overlap)} dari {top_k}")
+        print(f"   Overlap percentage: {len(overlap)/top_k*100:.1f}%")
+        print(f"   Unik TF-IDF: {len(tfidf_ids - bm25_ids)} dokumen")
+        print(f"   Unik BM25: {len(bm25_ids - tfidf_ids)} dokumen")
+        
+        score_stats = self.calculate_score_statistics(query, top_k)
+        print(f"\n🔹 Statistik Score:")
+        print(f"   TF-IDF:")
+        print(f"      Mean: {score_stats['tfidf']['mean']:.4f}")
+        print(f"      Std Dev: {score_stats['tfidf']['std']:.4f}")
+        print(f"      Range: {score_stats['tfidf']['min']:.4f} - {score_stats['tfidf']['max']:.4f}")
+        print(f"   BM25:")
+        print(f"      Mean: {score_stats['bm25']['mean']:.4f}")
+        print(f"      Std Dev: {score_stats['bm25']['std']:.4f}")
+        print(f"      Range: {score_stats['bm25']['min']:.4f} - {score_stats['bm25']['max']:.4f}")
+        
+        diversity = self.calculate_diversity_statistics(query, top_k)
+        print(f"\n🔹 Keberagaman Sumber:")
+        print(f"   TF-IDF: {diversity['tfidf']['unique_sources']} sumber berbeda")
+        for source, count in diversity['tfidf']['source_distribution'].items():
+            print(f"      - {source}: {count} artikel")
+        print(f"   BM25: {diversity['bm25']['unique_sources']} sumber berbeda")
+        for source, count in diversity['bm25']['source_distribution'].items():
+            print(f"      - {source}: {count} artikel")
+        
+        if len(overlap) >= 2:
+            rank_stats = self.calculate_ranking_statistics(query, top_k)
+            print(f"\n🔹 Korelasi Ranking:")
+            print(f"   Spearman Correlation: {rank_stats['rank_correlation']:.4f}")
+            if rank_stats['rank_correlation'] > 0.7:
+                print(f"   Interpretasi: Ranking sangat mirip")
+            elif rank_stats['rank_correlation'] > 0.4:
+                print(f"   Interpretasi: Ranking cukup mirip")
+            else:
+                print(f"   Interpretasi: Ranking berbeda signifikan")
+    
+    def calculate_diversity_statistics(self, query: str, top_k: int = 10) -> Dict:
+        """
+        Menghitung keberagaman sumber berita
+        """
+        results = self.search_both(query, top_k)
+        
+        tfidf_sources = [r['source'] for r in results['tfidf']]
+        bm25_sources = [r['source'] for r in results['bm25']]
+        
+        from collections import Counter
+        
+        return {
+            'tfidf': {
+                'unique_sources': len(set(tfidf_sources)),
+                'source_distribution': dict(Counter(tfidf_sources))
+            },
+            'bm25': {
+                'unique_sources': len(set(bm25_sources)),
+                'source_distribution': dict(Counter(bm25_sources))
+            }
+        }
+    
+    def calculate_score_statistics(self, query: str, top_k: int = 10) -> Dict:
+        """
+        Menghitung statistik distribusi score
+        """
+        results = self.search_both(query, top_k)
+        
+        tfidf_scores = [r['score'] for r in results['tfidf']]
+        bm25_scores = [r['score'] for r in results['bm25']]
+        
+        import numpy as np
+        
+        return {
+            'tfidf': {
+                'mean': np.mean(tfidf_scores) if tfidf_scores else 0,
+                'std': np.std(tfidf_scores) if tfidf_scores else 0,
+                'min': min(tfidf_scores) if tfidf_scores else 0,
+                'max': max(tfidf_scores) if tfidf_scores else 0,
+                'range': max(tfidf_scores) - min(tfidf_scores) if tfidf_scores else 0
+            },
+            'bm25': {
+                'mean': np.mean(bm25_scores) if bm25_scores else 0,
+                'std': np.std(bm25_scores) if bm25_scores else 0,
+                'min': min(bm25_scores) if bm25_scores else 0,
+                'max': max(bm25_scores) if bm25_scores else 0,
+                'range': max(bm25_scores) - min(bm25_scores) if bm25_scores else 0
+            }
+        }
+    
+    def calculate_ranking_statistics(self, query: str, top_k: int = 10) -> Dict:
+        """
+        Menghitung statistik ranking untuk perbandingan algoritma
+        """
+        results = self.search_both(query, top_k)
+        
+        tfidf_results = results['tfidf']
+        bm25_results = results['bm25']
+        
+        tfidf_ids = [r['doc_id'] for r in tfidf_results]
+        bm25_ids = [r['doc_id'] for r in bm25_results]
+        
+        tfidf_set = set(tfidf_ids)
+        bm25_set = set(bm25_ids)
+        
+        overlap = tfidf_set.intersection(bm25_set)
+        
+        rank_correlation = 0
+        if overlap:
+            common_docs = list(overlap)
+            tfidf_ranks = {doc_id: i for i, doc_id in enumerate(tfidf_ids)}
+            bm25_ranks = {doc_id: i for i, doc_id in enumerate(bm25_ids)}
+            
+            from scipy.stats import spearmanr
+            tfidf_rank_list = [tfidf_ranks[doc] for doc in common_docs]
+            bm25_rank_list = [bm25_ranks[doc] for doc in common_docs]
+            rank_correlation, _ = spearmanr(tfidf_rank_list, bm25_rank_list)
+        
+        return {
+            'overlap_count': len(overlap),
+            'overlap_percentage': len(overlap) / top_k * 100,
+            'tfidf_unique': len(tfidf_set - bm25_set),
+            'bm25_unique': len(bm25_set - tfidf_set),
+            'rank_correlation': rank_correlation if overlap else 0,
+            'total_retrieved': top_k
+        }
 
 
 def main():
-    index_file = "inverted_index.txt"
+    index_file = "inverted_index.pkl"
     corpus_file = "preprocessed_corpus.json"
     
     engine = SearchEngine(index_file, corpus_file)
     
     print("\n🔍 Mode Pencarian")
     print("Ketik 'quit' untuk keluar\n")
-    print("Setiap pencarian akan menampilkan hasil dari TF-IDF dan BM25")
-    print("="*80 + "\n")
     
     while True:
         query = input("Masukkan query pencarian: ").strip()
