@@ -1,0 +1,49 @@
+🔍 1. Mesin Pencari Artikel Kesehatan dalam Bahasa Indonesia
+
+Judul: “Rancang Bangun Mesin Pencari Artikel Kesehatan Berbahasa Indonesia Menggunakan TF-IDF dan BM25”
+Deskripsi singkat:
+Mengumpulkan korpus artikel dari situs kesehatan seperti Alodokter, Halodoc, dan KlikDokter. Sistem akan membantu pengguna mencari informasi tentang penyakit, gejala, dan pengobatan.
+Alasan: Relevan dan mudah mendapatkan data.
+Evaluasi: Precision, Recall, F1 Score antara TF-IDF vs BM25.
+
+📰 2. Mesin Pencari Berita Politik Indonesia
+
+Judul: “Pembangunan Vertical Search Engine untuk Artikel Berita Politik Indonesia”
+Deskripsi singkat:
+Korpus diambil dari situs berita seperti Kompas, Tempo, Detik, dan CNN Indonesia dengan kategori politik. Sistem mencari berita relevan terhadap kueri seperti “Pemilu 2024”, “Kebijakan luar negeri”, dsb.
+Keunggulan: Banyak sumber online yang bisa dicrawl otomatis.
+
+🎓 3. Mesin Pencari Abstrak Skripsi Bahasa Indonesia
+
+Judul: “Mesin Pencari Abstrak Skripsi Bahasa Indonesia Menggunakan Vector Space Model dan BM25”
+Deskripsi singkat:
+Korpus terdiri dari kumpulan abstrak skripsi dari repositori kampus (misal UGM, UI, Unsyiah). Sistem akan membantu mahasiswa mencari referensi penelitian dengan topik tertentu.
+Kelebihan: Mudah diukur relevansinya, cocok untuk lingkungan akademik.
+
+🌱 4. Mesin Pencari Informasi Lingkungan dan Energi Hijau
+
+Judul: “Rancang Bangun Mesin Pencari Artikel tentang Lingkungan dan Energi Terbarukan Berbahasa Indonesia”
+Deskripsi singkat:
+Korpus mencakup artikel blog dan berita tentang lingkungan, perubahan iklim, energi terbarukan.
+Manfaat: Mendukung kesadaran isu global dan SDGs.
+
+💬 5. Mesin Pencari Opini Publik di Media Sosial
+
+Judul: “Analisis dan Pencarian Informasi Opini Publik dari Tweet Berbahasa Indonesia tentang Isu Sosial”
+Deskripsi singkat:
+Korpus berupa tweet yang dikumpulkan via crawling dengan kata kunci topik tertentu (misal “polusi udara”, “BBM”, “Pilkada”).
+Catatan: Lebih menantang karena teks pendek dan tidak formal, tapi menarik untuk penelitian.
+
+Jika kamu ingin proposal yang paling aman dan mudah dikerjakan dalam 2–3 minggu, pilihan terbaik adalah:
+
+Mesin Pencari Artikel Kesehatan Berbahasa Indonesia dengan TF-IDF dan BM25
+
+Karena:
+
+Data mudah didapat.
+
+Bahasa cukup baku → mudah diolah (tokenisasi & stemming dengan Sastrawi).
+
+Relevan dengan masyarakat umum.
+
+Evaluasi algoritma jelas (TF-IDF vs BM25).
