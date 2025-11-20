@@ -257,7 +257,7 @@ class SearchEngine:
 
 def main():
     index_file = "inverted_index.pkl"
-    corpus_file = "preprocessed_corpus.json"
+    corpus_file = "dataset\preprocessed_corpus.json"
     
     engine = SearchEngine(index_file, corpus_file)
     
