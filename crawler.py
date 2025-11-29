@@ -354,8 +354,8 @@ class MultiSourceKambojaCrawler:
         print(df['source'].value_counts().to_string())
         print("="*70)
         print("\n💾 File tersimpan:")
-        print("   - corpus_wni_kamboja_multisource.json")
-        print("   - corpus_wni_kamboja_multisource.csv")
+        print("   - crawling_resultV2.json")
+        print("   - crawling_resultV2.csv")
 
 # JALANKAN
 if __name__ == "__main__":
