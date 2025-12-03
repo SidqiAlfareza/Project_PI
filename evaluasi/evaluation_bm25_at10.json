@@ -1,0 +1,212 @@
+{
+  "summary": {
+    "algorithm": "BM25",
+    "num_queries": 20,
+    "avg_precision@10": 0.6799999999999999,
+    "avg_recall@10": 0.7412373737373738,
+    "avg_f1@10": 0.6979803977412337,
+    "MAP": 0.6089357649625506
+  },
+  "per_query": [
+    {
+      "query": "penipuan online WNI di Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 11,
+      "num_retrieved": 10,
+      "precision@10": 0.8,
+      "recall@10": 0.7272727272727273,
+      "f1@10": 0.761904761904762,
+      "average_precision": 0.6888888888888889
+    },
+    {
+      "query": "WNI disekap di Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 8,
+      "num_retrieved": 10,
+      "precision@10": 0.8,
+      "recall@10": 1.0,
+      "f1@10": 0.888888888888889,
+      "average_precision": 0.959375
+    },
+    {
+      "query": "human trafficking WNI Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.8,
+      "recall@10": 0.8888888888888888,
+      "f1@10": 0.8421052631578948,
+      "average_precision": 0.8765432098765432
+    },
+    {
+      "query": "modus lowongan kerja palsu Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 10,
+      "num_retrieved": 10,
+      "precision@10": 0.9,
+      "recall@10": 0.9,
+      "f1@10": 0.9,
+      "average_precision": 0.8354365079365079
+    },
+    {
+      "query": "pemulangan WNI korban Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 8,
+      "num_retrieved": 10,
+      "precision@10": 0.6,
+      "recall@10": 0.75,
+      "f1@10": 0.6666666666666665,
+      "average_precision": 0.75
+    },
+    {
+      "query": "evakuasi WNI dari Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 6,
+      "num_retrieved": 10,
+      "precision@10": 0.5,
+      "recall@10": 0.8333333333333334,
+      "f1@10": 0.625,
+      "average_precision": 0.5833333333333334
+    },
+    {
+      "query": "TKI ilegal di Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.6,
+      "recall@10": 0.6666666666666666,
+      "f1@10": 0.631578947368421,
+      "average_precision": 0.5814814814814814
+    },
+    {
+      "query": "penggerebekan perusahaan scam Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 5,
+      "num_retrieved": 10,
+      "precision@10": 0.5,
+      "recall@10": 1.0,
+      "f1@10": 0.6666666666666666,
+      "average_precision": 0.52
+    },
+    {
+      "query": "bongkar sindikat Kamboja yang eksploitasi WNI",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.6,
+      "recall@10": 0.6666666666666666,
+      "f1@10": 0.631578947368421,
+      "average_precision": 0.5240740740740741
+    },
+    {
+      "query": "kronologi kasus WNI di Kamboja",
+      "algorithm": "BM25",
+      "num_relevant": 15,
+      "num_retrieved": 10,
+      "precision@10": 0.8,
+      "recall@10": 0.5333333333333333,
+      "f1@10": 0.64,
+      "average_precision": 0.3918518518518519
+    },
+    {
+      "query": "“WNI dipaksa bekerja di pusat scam Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.4,
+      "recall@10": 0.4444444444444444,
+      "f1@10": 0.4210526315789474,
+      "average_precision": 0.25555555555555554
+    },
+    {
+      "query": "“penyekapan WNI oleh perusahaan ilegal Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 14,
+      "num_retrieved": 10,
+      "precision@10": 0.9,
+      "recall@10": 0.6428571428571429,
+      "f1@10": 0.75,
+      "average_precision": 0.6277777777777779
+    },
+    {
+      "query": "“eksploitasi pekerja Indonesia di Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 7,
+      "num_retrieved": 10,
+      "precision@10": 0.6,
+      "recall@10": 0.8571428571428571,
+      "f1@10": 0.7058823529411764,
+      "average_precision": 0.6282312925170067
+    },
+    {
+      "query": "“penjualan manusia jaringan Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.5,
+      "recall@10": 0.5555555555555556,
+      "f1@10": 0.5263157894736842,
+      "average_precision": 0.31922398589065254
+    },
+    {
+      "query": "“kasus WNI tertipu bekerja di Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.7,
+      "recall@10": 0.7777777777777778,
+      "f1@10": 0.7368421052631577,
+      "average_precision": 0.5231481481481483
+    },
+    {
+      "query": "“WNI dijual ke perusahaan scam di Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 12,
+      "num_retrieved": 10,
+      "precision@10": 0.7,
+      "recall@10": 0.5833333333333334,
+      "f1@10": 0.6363636363636365,
+      "average_precision": 0.4231481481481482
+    },
+    {
+      "query": "“paksaan kerja WNI oleh sindikat Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 8,
+      "num_retrieved": 10,
+      "precision@10": 0.8,
+      "recall@10": 1.0,
+      "f1@10": 0.888888888888889,
+      "average_precision": 0.9415178571428571
+    },
+    {
+      "query": "“korban penipuan job offer ke Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "precision@10": 0.7,
+      "recall@10": 0.7777777777777778,
+      "f1@10": 0.7368421052631577,
+      "average_precision": 0.71005291005291
+    },
+    {
+      "query": "“jaringan kriminal yang mempekerjakan WNI di Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 12,
+      "num_retrieved": 10,
+      "precision@10": 0.7,
+      "recall@10": 0.5833333333333334,
+      "f1@10": 0.6363636363636365,
+      "average_precision": 0.5134259259259258
+    },
+    {
+      "query": "“penyelamatan korban TPPO asal Indonesia di Kamboja”",
+      "algorithm": "BM25",
+      "num_relevant": 11,
+      "num_retrieved": 10,
+      "precision@10": 0.7,
+      "recall@10": 0.6363636363636364,
+      "f1@10": 0.6666666666666666,
+      "average_precision": 0.5256493506493506
+    }
+  ]
+}

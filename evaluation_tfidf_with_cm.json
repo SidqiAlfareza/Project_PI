@@ -1,0 +1,275 @@
+{
+  "summary": {
+    "algorithm": "TFIDF",
+    "num_queries": 7,
+    "avg_precision@5": 0.8571428571428571,
+    "avg_recall@5": 0.5263605442176871,
+    "avg_f1@5": 0.6459954611215115,
+    "avg_accuracy@5": 0.9887755102040817,
+    "avg_specificity@5": 0.9982704824413096,
+    "avg_precision@10": 0.7428571428571429,
+    "avg_recall@10": 0.9166666666666667,
+    "avg_f1@10": 0.8118681284315958,
+    "avg_accuracy@10": 0.9918367346938776,
+    "avg_specificity@10": 0.993762788538434,
+    "MAP": 0.7983743431234929
+  },
+  "per_query": [
+    {
+      "query": "penipuan online WNI di Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 12,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 1.0,
+      "recall@5": 0.4166666666666667,
+      "f1@5": 0.5882352941176471,
+      "accuracy@5": 0.9833333333333333,
+      "specificity@5": 1.0,
+      "precision@10": 0.9,
+      "recall@10": 0.75,
+      "f1@10": 0.8181818181818182,
+      "accuracy@10": 0.9904761904761905,
+      "specificity@10": 0.9975490196078431,
+      "average_precision": 0.75,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 5,
+          "FP": 0,
+          "TN": 408,
+          "FN": 7
+        },
+        "cm@10": {
+          "TP": 9,
+          "FP": 1,
+          "TN": 407,
+          "FN": 3
+        }
+      }
+    },
+    {
+      "query": "WNI disekap di Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 7,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 1.0,
+      "recall@5": 0.7142857142857143,
+      "f1@5": 0.8333333333333333,
+      "accuracy@5": 0.9952380952380953,
+      "specificity@5": 1.0,
+      "precision@10": 0.7,
+      "recall@10": 1.0,
+      "f1@10": 0.8235294117647058,
+      "accuracy@10": 0.9928571428571429,
+      "specificity@10": 0.9927360774818402,
+      "average_precision": 0.9571428571428572,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 5,
+          "FP": 0,
+          "TN": 413,
+          "FN": 2
+        },
+        "cm@10": {
+          "TP": 7,
+          "FP": 3,
+          "TN": 410,
+          "FN": 0
+        }
+      }
+    },
+    {
+      "query": "human trafficking WNI Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 1.0,
+      "recall@5": 0.5555555555555556,
+      "f1@5": 0.7142857142857143,
+      "accuracy@5": 0.9904761904761905,
+      "specificity@5": 1.0,
+      "precision@10": 0.9,
+      "recall@10": 1.0,
+      "f1@10": 0.9473684210526316,
+      "accuracy@10": 0.9976190476190476,
+      "specificity@10": 0.9975669099756691,
+      "average_precision": 0.9626543209876544,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 5,
+          "FP": 0,
+          "TN": 411,
+          "FN": 4
+        },
+        "cm@10": {
+          "TP": 9,
+          "FP": 1,
+          "TN": 410,
+          "FN": 0
+        }
+      }
+    },
+    {
+      "query": "modus lowongan kerja palsu Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 9,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 0.8,
+      "recall@5": 0.4444444444444444,
+      "f1@5": 0.5714285714285714,
+      "accuracy@5": 0.9857142857142858,
+      "specificity@5": 0.9975669099756691,
+      "precision@10": 0.6,
+      "recall@10": 0.6666666666666666,
+      "f1@10": 0.631578947368421,
+      "accuracy@10": 0.9833333333333333,
+      "specificity@10": 0.9902676399026764,
+      "average_precision": 0.4645502645502646,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 4,
+          "FP": 1,
+          "TN": 410,
+          "FN": 5
+        },
+        "cm@10": {
+          "TP": 6,
+          "FP": 4,
+          "TN": 407,
+          "FN": 3
+        }
+      }
+    },
+    {
+      "query": "pemulangan WNI korban Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 6,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 0.6,
+      "recall@5": 0.5,
+      "f1@5": 0.5454545454545454,
+      "accuracy@5": 0.9880952380952381,
+      "specificity@5": 0.9951690821256038,
+      "precision@10": 0.6,
+      "recall@10": 1.0,
+      "f1@10": 0.7499999999999999,
+      "accuracy@10": 0.9904761904761905,
+      "specificity@10": 0.9903381642512077,
+      "average_precision": 0.707936507936508,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 3,
+          "FP": 2,
+          "TN": 412,
+          "FN": 3
+        },
+        "cm@10": {
+          "TP": 6,
+          "FP": 4,
+          "TN": 410,
+          "FN": 0
+        }
+      }
+    },
+    {
+      "query": "evakuasi WNI dari Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 7,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 0.6,
+      "recall@5": 0.42857142857142855,
+      "f1@5": 0.5,
+      "accuracy@5": 0.9857142857142858,
+      "specificity@5": 0.9951573849878934,
+      "precision@10": 0.7,
+      "recall@10": 1.0,
+      "f1@10": 0.8235294117647058,
+      "accuracy@10": 0.9928571428571429,
+      "specificity@10": 0.9927360774818402,
+      "average_precision": 0.7869614512471655,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 3,
+          "FP": 2,
+          "TN": 411,
+          "FN": 4
+        },
+        "cm@10": {
+          "TP": 7,
+          "FP": 3,
+          "TN": 410,
+          "FN": 0
+        }
+      }
+    },
+    {
+      "query": "TKI ilegal di Kamboja",
+      "algorithm": "TFIDF",
+      "num_relevant": 8,
+      "num_retrieved": 10,
+      "total_docs": 420,
+      "precision@5": 1.0,
+      "recall@5": 0.625,
+      "f1@5": 0.7692307692307693,
+      "accuracy@5": 0.9928571428571429,
+      "specificity@5": 1.0,
+      "precision@10": 0.8,
+      "recall@10": 1.0,
+      "f1@10": 0.888888888888889,
+      "accuracy@10": 0.9952380952380953,
+      "specificity@10": 0.9951456310679612,
+      "average_precision": 0.959375,
+      "confusion_matrices": {
+        "cm@5": {
+          "TP": 5,
+          "FP": 0,
+          "TN": 412,
+          "FN": 3
+        },
+        "cm@10": {
+          "TP": 8,
+          "FP": 2,
+          "TN": 410,
+          "FN": 0
+        }
+      }
+    }
+  ],
+  "aggregate_confusion_matrices": {
+    "aggregate_cm@5": {
+      "confusion_matrix": {
+        "TP": 30,
+        "FP": 5,
+        "TN": 2877,
+        "FN": 28
+      },
+      "metrics": {
+        "precision": 0.8571428571428571,
+        "recall": 0.5172413793103449,
+        "f1_score": 0.6451612903225806,
+        "accuracy": 0.9887755102040816,
+        "specificity": 0.998265093684941
+      }
+    },
+    "aggregate_cm@10": {
+      "confusion_matrix": {
+        "TP": 52,
+        "FP": 18,
+        "TN": 2864,
+        "FN": 6
+      },
+      "metrics": {
+        "precision": 0.7428571428571429,
+        "recall": 0.896551724137931,
+        "f1_score": 0.8125,
+        "accuracy": 0.9918367346938776,
+        "specificity": 0.9937543372657877
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+================================================================================
+PERBANDINGAN ALGORITMA: TF-IDF vs BM25 @10
+Tanggal: 2025-12-04 00:09:43
+================================================================================
+
+Jumlah Query: 20
+
+Metrik                                       TF-IDF            BM25      Difference          Winner
+--------------------------------------------------------------------------------------------------
+avg_precision@10                             0.7350          0.6800         -0.0550          TF-IDF
+avg_recall@10                                0.8012          0.7412         -0.0599          TF-IDF
+avg_f1@10                                    0.7553          0.6980         -0.0574          TF-IDF
+MAP                                          0.6927          0.6089         -0.0838          TF-IDF
+
+================================================================================
+KESIMPULAN
+--------------------------------------------------------------------------------
+TF-IDF menang di 4 metrik
+BM25 menang di 0 metrik
+
+ALGORITMA TERBAIK: TF-IDF
+
+================================================================================
+PERBANDINGAN DETAIL PER QUERY
+================================================================================
+
+[1] Query: penipuan online WNI di Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.9000       0.8000       TF-IDF
+recall@10                       0.8182       0.7273       TF-IDF
+f1@10                           0.8571       0.7619       TF-IDF
+average_precision               0.8182       0.6889       TF-IDF
+
+[2] Query: WNI disekap di Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.8000          TIE
+recall@10                       1.0000       1.0000          TIE
+f1@10                           0.8889       0.8889          TIE
+average_precision               0.9594       0.9594          TIE
+
+[3] Query: human trafficking WNI Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.9000       0.8000       TF-IDF
+recall@10                       1.0000       0.8889       TF-IDF
+f1@10                           0.9474       0.8421       TF-IDF
+average_precision               0.9627       0.8765       TF-IDF
+
+[4] Query: modus lowongan kerja palsu Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.7000       0.9000         BM25
+recall@10                       0.7000       0.9000         BM25
+f1@10                           0.7000       0.9000         BM25
+average_precision               0.6732       0.8354         BM25
+
+[5] Query: pemulangan WNI korban Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.6000       TF-IDF
+recall@10                       1.0000       0.7500       TF-IDF
+f1@10                           0.8889       0.6667       TF-IDF
+average_precision               0.8957       0.7500       TF-IDF
+
+[6] Query: evakuasi WNI dari Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.6000       0.5000       TF-IDF
+recall@10                       1.0000       0.8333       TF-IDF
+f1@10                           0.7500       0.6250       TF-IDF
+average_precision               0.7370       0.5833       TF-IDF
+
+[7] Query: TKI ilegal di Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.6000       TF-IDF
+recall@10                       0.8889       0.6667       TF-IDF
+f1@10                           0.8421       0.6316       TF-IDF
+average_precision               0.8528       0.5815       TF-IDF
+
+[8] Query: penggerebekan perusahaan scam Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.4000       0.5000         BM25
+recall@10                       0.8000       1.0000         BM25
+f1@10                           0.5333       0.6667         BM25
+average_precision               0.6643       0.5200       TF-IDF
+
+[9] Query: bongkar sindikat Kamboja yang eksploitasi WNI
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.6000       TF-IDF
+recall@10                       0.8889       0.6667       TF-IDF
+f1@10                           0.8421       0.6316       TF-IDF
+average_precision               0.7454       0.5241       TF-IDF
+
+[10] Query: kronologi kasus WNI di Kamboja
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.9000       0.8000       TF-IDF
+recall@10                       0.6000       0.5333       TF-IDF
+f1@10                           0.7200       0.6400       TF-IDF
+average_precision               0.5047       0.3919       TF-IDF
+
+[11] Query: “WNI dipaksa bekerja di pusat scam Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.6000       0.4000       TF-IDF
+recall@10                       0.6667       0.4444       TF-IDF
+f1@10                           0.6316       0.4211       TF-IDF
+average_precision               0.3506       0.2556       TF-IDF
+
+[12] Query: “penyekapan WNI oleh perusahaan ilegal Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.9000       0.9000          TIE
+recall@10                       0.6429       0.6429          TIE
+f1@10                           0.7500       0.7500          TIE
+average_precision               0.5825       0.6278         BM25
+
+[13] Query: “eksploitasi pekerja Indonesia di Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.7000       0.6000       TF-IDF
+recall@10                       1.0000       0.8571       TF-IDF
+f1@10                           0.8235       0.7059       TF-IDF
+average_precision               0.9240       0.6282       TF-IDF
+
+[14] Query: “penjualan manusia jaringan Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.7000       0.5000       TF-IDF
+recall@10                       0.7778       0.5556       TF-IDF
+f1@10                           0.7368       0.5263       TF-IDF
+average_precision               0.7480       0.3192       TF-IDF
+
+[15] Query: “kasus WNI tertipu bekerja di Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.7000       TF-IDF
+recall@10                       0.8889       0.7778       TF-IDF
+f1@10                           0.8421       0.7368       TF-IDF
+average_precision               0.6857       0.5231       TF-IDF
+
+[16] Query: “WNI dijual ke perusahaan scam di Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.7000       0.7000          TIE
+recall@10                       0.5833       0.5833          TIE
+f1@10                           0.6364       0.6364          TIE
+average_precision               0.5069       0.4231       TF-IDF
+
+[17] Query: “paksaan kerja WNI oleh sindikat Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.6000       0.8000         BM25
+recall@10                       0.7500       1.0000         BM25
+f1@10                           0.6667       0.8889         BM25
+average_precision               0.6417       0.9415         BM25
+
+[18] Query: “korban penipuan job offer ke Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.8000       0.7000       TF-IDF
+recall@10                       0.8889       0.7778       TF-IDF
+f1@10                           0.8421       0.7368       TF-IDF
+average_precision               0.7783       0.7101       TF-IDF
+
+[19] Query: “jaringan kriminal yang mempekerjakan WNI di Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.7000       0.7000          TIE
+recall@10                       0.5833       0.5833          TIE
+f1@10                           0.6364       0.6364          TIE
+average_precision               0.4174       0.5134         BM25
+
+[20] Query: “penyelamatan korban TPPO asal Indonesia di Kamboja”
+--------------------------------------------------------------------------------
+Metrik                          TF-IDF         BM25       Winner
+---------------------------------------------------------------
+precision@10                    0.6000       0.7000         BM25
+recall@10                       0.5455       0.6364         BM25
+f1@10                           0.5714       0.6667         BM25
+average_precision               0.4057       0.5256         BM25
+

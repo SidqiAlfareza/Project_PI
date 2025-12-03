@@ -1,0 +1,240 @@
+================================================================================
+HASIL EVALUASI SEARCH ENGINE - BM25
+Tanggal: 2025-12-04 00:09:43
+================================================================================
+
+RINGKASAN EVALUASI @10
+--------------------------------------------------------------------------------
+Jumlah Query: 20
+
+Metrik                                   Nilai
+--------------------------------------------------------------------------------
+Average Precision@10                    0.6800
+Average Recall@10                       0.7412
+Average F1-Score@10                     0.6980
+Mean Average Precision (MAP)            0.6089
+
+================================================================================
+HASIL PER QUERY @10
+================================================================================
+
+[1] Query: penipuan online WNI di Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 11
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.8000
+    Recall@10:         0.7273
+    F1-Score@10:       0.7619
+    Average Precision: 0.6889
+
+[2] Query: WNI disekap di Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 8
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.8000
+    Recall@10:         1.0000
+    F1-Score@10:       0.8889
+    Average Precision: 0.9594
+
+[3] Query: human trafficking WNI Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.8000
+    Recall@10:         0.8889
+    F1-Score@10:       0.8421
+    Average Precision: 0.8765
+
+[4] Query: modus lowongan kerja palsu Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 10
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.9000
+    Recall@10:         0.9000
+    F1-Score@10:       0.9000
+    Average Precision: 0.8354
+
+[5] Query: pemulangan WNI korban Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 8
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.6000
+    Recall@10:         0.7500
+    F1-Score@10:       0.6667
+    Average Precision: 0.7500
+
+[6] Query: evakuasi WNI dari Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 6
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.5000
+    Recall@10:         0.8333
+    F1-Score@10:       0.6250
+    Average Precision: 0.5833
+
+[7] Query: TKI ilegal di Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.6000
+    Recall@10:         0.6667
+    F1-Score@10:       0.6316
+    Average Precision: 0.5815
+
+[8] Query: penggerebekan perusahaan scam Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 5
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.5000
+    Recall@10:         1.0000
+    F1-Score@10:       0.6667
+    Average Precision: 0.5200
+
+[9] Query: bongkar sindikat Kamboja yang eksploitasi WNI
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.6000
+    Recall@10:         0.6667
+    F1-Score@10:       0.6316
+    Average Precision: 0.5241
+
+[10] Query: kronologi kasus WNI di Kamboja
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 15
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.8000
+    Recall@10:         0.5333
+    F1-Score@10:       0.6400
+    Average Precision: 0.3919
+
+[11] Query: “WNI dipaksa bekerja di pusat scam Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.4000
+    Recall@10:         0.4444
+    F1-Score@10:       0.4211
+    Average Precision: 0.2556
+
+[12] Query: “penyekapan WNI oleh perusahaan ilegal Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 14
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.9000
+    Recall@10:         0.6429
+    F1-Score@10:       0.7500
+    Average Precision: 0.6278
+
+[13] Query: “eksploitasi pekerja Indonesia di Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 7
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.6000
+    Recall@10:         0.8571
+    F1-Score@10:       0.7059
+    Average Precision: 0.6282
+
+[14] Query: “penjualan manusia jaringan Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.5000
+    Recall@10:         0.5556
+    F1-Score@10:       0.5263
+    Average Precision: 0.3192
+
+[15] Query: “kasus WNI tertipu bekerja di Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.7000
+    Recall@10:         0.7778
+    F1-Score@10:       0.7368
+    Average Precision: 0.5231
+
+[16] Query: “WNI dijual ke perusahaan scam di Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 12
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.7000
+    Recall@10:         0.5833
+    F1-Score@10:       0.6364
+    Average Precision: 0.4231
+
+[17] Query: “paksaan kerja WNI oleh sindikat Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 8
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.8000
+    Recall@10:         1.0000
+    F1-Score@10:       0.8889
+    Average Precision: 0.9415
+
+[18] Query: “korban penipuan job offer ke Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 9
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.7000
+    Recall@10:         0.7778
+    F1-Score@10:       0.7368
+    Average Precision: 0.7101
+
+[19] Query: “jaringan kriminal yang mempekerjakan WNI di Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 12
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.7000
+    Recall@10:         0.5833
+    F1-Score@10:       0.6364
+    Average Precision: 0.5134
+
+[20] Query: “penyelamatan korban TPPO asal Indonesia di Kamboja”
+--------------------------------------------------------------------------------
+  Jumlah Dokumen Relevan (Ground Truth): 11
+  Jumlah Dokumen Retrieved (@10):        10
+
+  Performance Metrics:
+    Precision@10:      0.7000
+    Recall@10:         0.6364
+    F1-Score@10:       0.6667
+    Average Precision: 0.5256
+

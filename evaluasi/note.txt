@@ -1,0 +1,192 @@
+IYA — hasil seperti ini sangat mungkin terjadi dan NORMAL, jadi kamu tidak salah sama sekali.
+Banyak mahasiswa mengira “BM25 pasti lebih bagus”, padahal tidak selalu.
+
+Justru dalam DOKUMEN-PENELUSURAN BERITA / KORPUS KECIL seperti tugas kalian, TF-IDF sering menang, dan ini bisa dijelaskan secara ilmiah.
+
+Di bawah ini saya jelaskan:
+
+Apakah hasil ini normal?
+
+Kenapa TF-IDF bisa menang?
+
+Bagaimana jika ingin mengoptimalkan BM25 agar hasil lebih baik?
+
+Bagaimana memastikan evaluasi kalian valid?
+
+🟦 1. APAKAH HASIL INI NORMAL?
+
+✔ Normal — sangat normal.
+✔ Tergantung dataset, BM25 tidak selalu unggul.
+✔ Banyak dataset kecil berbasis berita, artikel pendek, judul, atau korpus yang seragam → TF-IDF lebih stabil dan sering lebih akurat.
+
+Jadi tidak ada yang salah dengan hasil evaluasi di atas.
+
+🟩 2. KENAPA TF-IDF BISA MENANG?
+
+Ada 4 penyebab umum:
+
+(1) Dokumen kalian kemungkinan PENDEK / SERAGAM
+
+BM25 sangat diuntungkan kalau dokumen panjang atau variatif.
+
+Contoh: jurnal, forum, blog panjang.
+
+Jika korpus kalian adalah:
+
+berita 1–4 paragraf
+
+artikel seragam
+
+pola kata berulang
+
+topik sangat mirip (“WNI Kamboja”)
+
+➡️ BM25 kehilangan keunggulan
+➡️ TF-IDF justru lebih presisi karena menghukum kata-kata umum secara keras.
+
+(2) Query kalian sangat spesifik
+
+Contoh query:
+
+“WNI disekap di Kamboja”
+
+“evakuasi WNI dari Kamboja”
+
+“TPPO WNI Kamboja”
+
+Query seperti itu mengandung kata-kata kunci unik, sehingga:
+
+✔ TF-IDF = kuat untuk kata spesifik
+✔ BM25 = lebih “lunak” → memberi bobot untuk kata umum seperti "WNI", "Kamboja"
+
+Akhirnya TF-IDF menang.
+
+(3) Parameter BM25 default tidak cocok
+
+BM25 memiliki 2 parameter utama:
+
+k1 (1.2–2.0) → memengaruhi bobot TF
+
+b (0.4–0.9) → mengontrol normalisasi panjang dokumen
+
+Jika pakai default (k1=1.2, b=0.75), tapi:
+
+dokumen kalian pendek → normalisasi panjang jadi berlebihan
+
+query pendek → penalti tidak terasa
+
+Maka BM25 kalah.
+
+(4) Ground truth kalian kemungkinan fokus pada kesesuaian JUDUL atau paragraf awal
+
+Kalau relevansi lebih ditentukan oleh:
+
+judul,
+
+lead paragraph,
+
+kata kunci eksplisit,
+
+kesesuaian literal,
+
+maka TF-IDF memang lebih unggul.
+
+BM25 lebih efektif dalam “semantic looseness” pada dokumen panjang — yang mungkin tidak terjadi di dataset kalian.
+
+🟦 3. BAGAIMANA MENGOPTIMALKAN BM25 AGAR HASILNYA BISA LEBIH BAGUS?
+
+Jika ingin mencoba meningkatkan BM25, ada 3 cara:
+
+(A) Hyperparameter Tuning k1 dan b
+
+Coba berbagai kombinasi:
+
+k1 = [0.8, 1.2, 1.5, 1.8, 2.0]
+b  = [0.3, 0.5, 0.7, 0.9]
+
+
+Umumnya:
+
+korpus pendek → b kecil (0.3–0.5)
+
+query pendek → k1 kecil (0.8–1.2)
+
+BANYAK kasus menunjukkan bahwa:
+
+BM25 dengan b=0.3 hampir selalu lebih baik pada data berita pendek.
+
+(B) Preprocessing berpengaruh besar
+
+Untuk BM25:
+
+Hilangkan stopwords dengan benar
+
+Lakukan stemming/kata dasar
+
+Pastikan tokenisasi tidak memecah nama tempat (“Kamboja”) atau entitas khusus
+
+Kadang TF-IDF menang karena preprocessing-nya lebih bersih.
+
+(C) Gunakan Query Expansion
+
+Menambah kata sinonim atau frase terkait bisa membuat BM25 lebih kompetitif.
+
+Contoh query:
+
+“TPPO WNI Kamboja”
+
+Ekspansi:
+
+“trafficking”
+
+“scam”
+
+“perekrutan ilegal”
+
+BM25 bisa naik MAP 5–10%.
+
+🟦 4. APAKAH HASIL EVALUASI KALIAN SUDAH VALID?
+
+Dilihat dari hasil:
+
+Precision@10 cukup tinggi (0.73 vs 0.68)
+
+Recall@10 kuat
+
+MAP TF-IDF = 0.69 → ini bagus untuk IR sederhana
+
+BM25 = 0.60 → masih wajar
+
+Ini hasil REALISTIS, bukan error.
+
+Kalau salah, biasanya:
+
+precision terlalu rendah (<0.2)
+
+MAP terlalu kecil (<0.1)
+
+TF-IDF vs BM25 sama persis (error implementasi)
+
+Tapi yang kamu punya sangat wajar.
+
+🟩 KESIMPULAN UTAMA
+
+Hasil evaluasi kalian normal, valid, dan masuk akal.
+
+Tidak ada aturan BM25 harus menang.
+
+TF-IDF memang bisa unggul pada:
+✔ dokumen pendek
+✔ korpus sangat seragam
+✔ query keyword-heavy
+
+BM25 bisa dioptimalkan dengan tuning atau preprocessing.
+
+Kalau kamu mau, saya bisa buatkan:
+
+✔ Analisis “Mengapa TF-IDF menang?” untuk dimasukkan ke laporan
+✔ Cara tuning parameter BM25 dengan grid search
+✔ Script Python untuk meningkatkan BM25
+✔ Diagram grafik perbandingan TF-IDF vs BM25
+
+Tinggal bilang mau yang mana!

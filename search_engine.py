@@ -98,7 +98,8 @@ class SearchEngine:
             return
         
         for i, result in enumerate(results, 1):
-            print(f"\n[{i}] {result['title']}")
+            print(f"\n[{i}] 📄 Doc ID: {result['doc_id']}")  # Tambahkan Doc ID di sini
+            print(f"    {result['title']}")
             print(f"    Score: {result['score']:.4f}")
             print(f"    Sumber: {result['source']}")
             print(f"    URL: {result['url']}")
@@ -163,7 +164,7 @@ def main():
         if not query:
             continue
         
-        engine.compare_algorithms(query, top_k=5)
+        engine.compare_algorithms(query, top_k=10)
         print("\n" + "="*80 + "\n")
 
 
