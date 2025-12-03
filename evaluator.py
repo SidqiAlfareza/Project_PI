@@ -6,27 +6,15 @@ from Search_Engine import SearchEngine
 
 class SearchEngineEvaluator:
     def __init__(self, engine: SearchEngine, ground_truth_file: str):
-        """
-        Inisialisasi evaluator
-        
-        Args:
-            engine: Instance SearchEngine yang akan dievaluasi
-            ground_truth_file: Path ke file ground truth
-        """
         self.engine = engine
         self.ground_truth = self._load_ground_truth(ground_truth_file)
-        self.k = 10  # Hanya evaluasi @10
+        self.k = 10
         
-        # Buat folder evaluasi (PERBAIKAN: gunakan path absolut)
         self.eval_folder = os.path.join(os.path.dirname(__file__), "evaluasi")
         os.makedirs(self.eval_folder, exist_ok=True)
         print(f"📁 Folder evaluasi: {self.eval_folder}")
     
     def _load_ground_truth(self, file_path: str) -> Dict[str, List[int]]:
-        """
-        Load ground truth dari file txt
-        Format: "query" = doc_id1, doc_id2, doc_id3, ...
-        """
         ground_truth = {}
         
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -41,17 +29,16 @@ class SearchEngineEvaluator:
                         query_part, ids_part = line.split('=', 1)
                         query = query_part.strip().strip('"')
                         
-                        # Parse doc IDs - filter empty strings
                         doc_ids = []
                         for id_str in ids_part.split(','):
                             id_str = id_str.strip()
-                            if id_str:  # Only process non-empty strings
+                            if id_str:
                                 try:
                                     doc_ids.append(int(id_str))
                                 except ValueError:
                                     print(f"⚠️  Warning: Invalid doc ID '{id_str}' at line {line_num}, skipping...")
                         
-                        if doc_ids:  # Only add if there are valid doc IDs
+                        if doc_ids:
                             ground_truth[query] = doc_ids
                         else:
                             print(f"⚠️  Warning: No valid doc IDs for query '{query}' at line {line_num}")
@@ -65,7 +52,6 @@ class SearchEngineEvaluator:
         return ground_truth
     
     def precision_at_10(self, relevant_docs: List[int], retrieved_docs: List[int]) -> float:
-        """Menghitung Precision@10"""
         if self.k == 0:
             return 0.0
         retrieved_10 = retrieved_docs[:self.k]
@@ -73,7 +59,6 @@ class SearchEngineEvaluator:
         return relevant_retrieved / self.k
     
     def recall_at_10(self, relevant_docs: List[int], retrieved_docs: List[int]) -> float:
-        """Menghitung Recall@10"""
         if len(relevant_docs) == 0:
             return 0.0
         retrieved_10 = retrieved_docs[:self.k]
@@ -81,7 +66,6 @@ class SearchEngineEvaluator:
         return relevant_retrieved / len(relevant_docs)
     
     def f1_score_at_10(self, relevant_docs: List[int], retrieved_docs: List[int]) -> float:
-        """Menghitung F1-Score@10"""
         precision = self.precision_at_10(relevant_docs, retrieved_docs)
         recall = self.recall_at_10(relevant_docs, retrieved_docs)
         
@@ -90,7 +74,6 @@ class SearchEngineEvaluator:
         return 2 * (precision * recall) / (precision + recall)
     
     def average_precision(self, relevant_docs: List[int], retrieved_docs: List[int]) -> float:
-        """Menghitung Average Precision (AP)"""
         if len(relevant_docs) == 0:
             return 0.0
         
@@ -106,7 +89,6 @@ class SearchEngineEvaluator:
         return score / len(relevant_docs)
     
     def mean_average_precision(self, results: Dict[str, List[int]]) -> float:
-        """Menghitung Mean Average Precision (MAP)"""
         if len(results) == 0:
             return 0.0
         
@@ -119,17 +101,12 @@ class SearchEngineEvaluator:
         return sum(aps) / len(aps)
     
     def evaluate_single_query(self, query: str, algorithm: str = 'bm25') -> Dict:
-        """
-        Evaluasi untuk satu query @10
-        """
-        # Dapatkan dokumen relevan dari ground truth
         relevant_docs = self.ground_truth.get(query, [])
         
         if not relevant_docs:
             print(f"⚠️  Query '{query}' tidak ada di ground truth")
             return None
         
-        # Lakukan pencarian
         if algorithm.lower() == 'bm25':
             results = self.engine.search_bm25(query, top_k=self.k)
         else:
@@ -137,7 +114,6 @@ class SearchEngineEvaluator:
         
         retrieved_docs = [r['doc_id'] for r in results]
         
-        # Hitung metrik
         metrics = {
             'query': query,
             'algorithm': algorithm.upper(),
@@ -152,9 +128,6 @@ class SearchEngineEvaluator:
         return metrics
     
     def evaluate_all_queries(self, algorithm: str = 'bm25') -> Dict:
-        """
-        Evaluasi untuk semua query @10
-        """
         print(f"\n{'='*80}")
         print(f"📊 EVALUASI SEARCH ENGINE @10 - Algorithm: {algorithm.upper()}")
         print(f"{'='*80}\n")
@@ -167,14 +140,12 @@ class SearchEngineEvaluator:
             if metrics:
                 all_metrics.append(metrics)
                 
-                # Simpan untuk MAP calculation
                 if algorithm.lower() == 'bm25':
                     results = self.engine.search_bm25(query, top_k=self.k)
                 else:
                     results = self.engine.search_tfidf(query, top_k=self.k)
                 retrieved_docs_map[query] = [r['doc_id'] for r in results]
         
-        # Hitung rata-rata untuk setiap metrik
         avg_metrics = {
             'algorithm': algorithm.upper(),
             'num_queries': len(all_metrics),
@@ -190,9 +161,6 @@ class SearchEngineEvaluator:
         }
     
     def save_results_to_txt(self, results: Dict, filename: str):
-        """
-        Simpan hasil evaluasi ke file TXT dengan format yang rapi
-        """
         filepath = os.path.join(self.eval_folder, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -239,9 +207,6 @@ class SearchEngineEvaluator:
         print(f"✅ Hasil evaluasi TXT disimpan: {filepath}")
     
     def save_results_to_json(self, results: Dict, filename: str):
-        """
-        Simpan hasil evaluasi ke file JSON
-        """
         filepath = os.path.join(self.eval_folder, filename)
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -250,23 +215,16 @@ class SearchEngineEvaluator:
         print(f"✅ Hasil evaluasi JSON disimpan: {filepath}")
     
     def compare_algorithms(self):
-        """
-        Membandingkan performa TF-IDF vs BM25 @10
-        OTOMATIS mengevaluasi kedua algoritma
-        """
         print(f"\n{'='*80}")
         print(f"🔄 EVALUASI OTOMATIS: TF-IDF & BM25 @10")
         print(f"{'='*80}\n")
         
-        # Evaluasi TF-IDF
         print("🔍 [1/2] Mengevaluasi TF-IDF...")
         tfidf_results = self.evaluate_all_queries('tfidf')
         
-        # Evaluasi BM25
         print("🔍 [2/2] Mengevaluasi BM25...")
         bm25_results = self.evaluate_all_queries('bm25')
         
-        # Simpan hasil individual (akan overwrite jika sudah ada)
         print("\n💾 Menyimpan hasil evaluasi...")
         self.save_results_to_txt(tfidf_results, 'evaluation_tfidf_at10.txt')
         self.save_results_to_json(tfidf_results, 'evaluation_tfidf_at10.json')
@@ -274,17 +232,14 @@ class SearchEngineEvaluator:
         self.save_results_to_txt(bm25_results, 'evaluation_bm25_at10.txt')
         self.save_results_to_json(bm25_results, 'evaluation_bm25_at10.json')
         
-        # Buat comparison summary
         comparison = {
             'tfidf': tfidf_results,
             'bm25': bm25_results
         }
         
-        # Simpan comparison (akan overwrite jika sudah ada)
         self.save_comparison_to_txt(tfidf_results, bm25_results)
         self.save_results_to_json(comparison, 'evaluation_comparison_at10.json')
         
-        # Print comparison
         print("\n" + "="*80)
         print("📊 PERBANDINGAN LANGSUNG @10")
         print("="*80)
@@ -312,9 +267,6 @@ class SearchEngineEvaluator:
         return comparison
     
     def save_comparison_to_txt(self, tfidf_results: Dict, bm25_results: Dict):
-        """
-        Simpan hasil perbandingan ke file TXT
-        """
         filepath = os.path.join(self.eval_folder, 'evaluation_comparison_at10.txt')
         
         with open(filepath, 'w', encoding='utf-8') as f:
@@ -349,7 +301,6 @@ class SearchEngineEvaluator:
             f.write("KESIMPULAN\n")
             f.write("-"*80 + "\n")
             
-            # Hitung winner berdasarkan key metrics
             tfidf_wins = 0
             bm25_wins = 0
             
@@ -369,7 +320,6 @@ class SearchEngineEvaluator:
             else:
                 f.write("HASIL: TIE (Performa setara)\n")
             
-            # Detail comparison per query
             f.write("\n" + "="*80 + "\n")
             f.write("PERBANDINGAN DETAIL PER QUERY\n")
             f.write("="*80 + "\n\n")
@@ -399,11 +349,6 @@ class SearchEngineEvaluator:
 
 
 def main():
-    """
-    Program evaluator untuk Search Engine
-    OTOMATIS mengevaluasi TF-IDF dan BM25
-    """
-    # Load search engine
     index_file = "inverted_index.txt"
     corpus_file = "dataset/preprocessed_corpus.json"
     ground_truth_file = "ground_truth.txt"
@@ -421,7 +366,6 @@ def main():
     print("\n🚀 Memulai evaluasi otomatis untuk TF-IDF dan BM25...")
     print("    (File akan diperbarui jika sudah ada)\n")
     
-    # Jalankan evaluasi otomatis
     comparison = evaluator.compare_algorithms()
     
     print("\n" + "="*80)

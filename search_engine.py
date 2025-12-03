@@ -10,7 +10,6 @@ class SearchEngine:
         print("🔍 Memuat Search Engine...")
         print(f"📂 Loading corpus from: {os.path.abspath(corpus_file)}")
         
-        # Deteksi format file berdasarkan parameter atau ekstensi
         if file_type == 'txt':
             self.index = InvertedIndex.load_index_from_txt(index_file)
         elif file_type == 'json':
@@ -98,7 +97,7 @@ class SearchEngine:
             return
         
         for i, result in enumerate(results, 1):
-            print(f"\n[{i}] 📄 Doc ID: {result['doc_id']}")  # Tambahkan Doc ID di sini
+            print(f"\n[{i}] 📄 Doc ID: {result['doc_id']}")
             print(f"    {result['title']}")
             print(f"    Score: {result['score']:.4f}")
             print(f"    Sumber: {result['source']}")
