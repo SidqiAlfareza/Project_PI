@@ -17,9 +17,10 @@ class SearchEngineEvaluator:
         self.ground_truth = self._load_ground_truth(ground_truth_file)
         self.k = 10  # Hanya evaluasi @10
         
-        # Buat folder evaluasi
-        self.eval_folder = "evaluasi"
+        # Buat folder evaluasi (PERBAIKAN: gunakan path absolut)
+        self.eval_folder = os.path.join(os.path.dirname(__file__), "evaluasi")
         os.makedirs(self.eval_folder, exist_ok=True)
+        print(f"📁 Folder evaluasi: {self.eval_folder}")
     
     def _load_ground_truth(self, file_path: str) -> Dict[str, List[int]]:
         """
@@ -251,20 +252,22 @@ class SearchEngineEvaluator:
     def compare_algorithms(self):
         """
         Membandingkan performa TF-IDF vs BM25 @10
+        OTOMATIS mengevaluasi kedua algoritma
         """
         print(f"\n{'='*80}")
-        print(f"🔄 PERBANDINGAN ALGORITMA @10: TF-IDF vs BM25")
+        print(f"🔄 EVALUASI OTOMATIS: TF-IDF & BM25 @10")
         print(f"{'='*80}\n")
         
         # Evaluasi TF-IDF
-        print("\n🔍 Mengevaluasi TF-IDF...")
+        print("🔍 [1/2] Mengevaluasi TF-IDF...")
         tfidf_results = self.evaluate_all_queries('tfidf')
         
         # Evaluasi BM25
-        print("\n🔍 Mengevaluasi BM25...")
+        print("🔍 [2/2] Mengevaluasi BM25...")
         bm25_results = self.evaluate_all_queries('bm25')
         
-        # Simpan hasil individual
+        # Simpan hasil individual (akan overwrite jika sudah ada)
+        print("\n💾 Menyimpan hasil evaluasi...")
         self.save_results_to_txt(tfidf_results, 'evaluation_tfidf_at10.txt')
         self.save_results_to_json(tfidf_results, 'evaluation_tfidf_at10.json')
         
@@ -277,7 +280,7 @@ class SearchEngineEvaluator:
             'bm25': bm25_results
         }
         
-        # Simpan comparison
+        # Simpan comparison (akan overwrite jika sudah ada)
         self.save_comparison_to_txt(tfidf_results, bm25_results)
         self.save_results_to_json(comparison, 'evaluation_comparison_at10.json')
         
@@ -398,51 +401,41 @@ class SearchEngineEvaluator:
 def main():
     """
     Program evaluator untuk Search Engine
+    OTOMATIS mengevaluasi TF-IDF dan BM25
     """
     # Load search engine
     index_file = "inverted_index.txt"
     corpus_file = "dataset/preprocessed_corpus.json"
     ground_truth_file = "ground_truth.txt"
     
-    print("🔍 Loading Search Engine...")
+    print("="*80)
+    print("🔍 SEARCH ENGINE EVALUATOR @10")
+    print("="*80)
+    
+    print("\n📂 Loading Search Engine...")
     engine = SearchEngine(index_file, corpus_file, file_type='txt')
     
     print("📊 Initializing Evaluator...")
     evaluator = SearchEngineEvaluator(engine, ground_truth_file)
     
-    # Pilih mode evaluasi
+    print("\n🚀 Memulai evaluasi otomatis untuk TF-IDF dan BM25...")
+    print("    (File akan diperbarui jika sudah ada)\n")
+    
+    # Jalankan evaluasi otomatis
+    comparison = evaluator.compare_algorithms()
+    
     print("\n" + "="*80)
-    print("MODE EVALUASI @10:")
-    print("1. Evaluasi TF-IDF saja")
-    print("2. Evaluasi BM25 saja")
-    print("3. Perbandingan TF-IDF vs BM25 (RECOMMENDED)")
+    print("✅ EVALUASI SELESAI!")
     print("="*80)
-    
-    choice = input("\nPilih mode (1/2/3): ").strip()
-    
-    if choice == '1':
-        print("\n🔍 Mengevaluasi TF-IDF...")
-        results = evaluator.evaluate_all_queries('tfidf')
-        evaluator.save_results_to_txt(results, 'evaluation_tfidf_at10.txt')
-        evaluator.save_results_to_json(results, 'evaluation_tfidf_at10.json')
-        print("\n✅ Evaluasi TF-IDF selesai!")
-    
-    elif choice == '2':
-        print("\n🔍 Mengevaluasi BM25...")
-        results = evaluator.evaluate_all_queries('bm25')
-        evaluator.save_results_to_txt(results, 'evaluation_bm25_at10.txt')
-        evaluator.save_results_to_json(results, 'evaluation_bm25_at10.json')
-        print("\n✅ Evaluasi BM25 selesai!")
-    
-    elif choice == '3':
-        comparison = evaluator.compare_algorithms()
-        print("\n✅ Perbandingan algoritma selesai!")
-    
-    else:
-        print("❌ Pilihan tidak valid!")
-        return
-    
-    print(f"\n📁 Semua hasil disimpan di folder: {evaluator.eval_folder}/")
+    print(f"\n📁 Semua hasil disimpan di: {evaluator.eval_folder}/")
+    print("\n📄 File yang dihasilkan:")
+    print("   • evaluation_tfidf_at10.txt")
+    print("   • evaluation_tfidf_at10.json")
+    print("   • evaluation_bm25_at10.txt")
+    print("   • evaluation_bm25_at10.json")
+    print("   • evaluation_comparison_at10.txt")
+    print("   • evaluation_comparison_at10.json")
+    print("\n" + "="*80)
 
 
 if __name__ == "__main__":
